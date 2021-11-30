@@ -10,7 +10,7 @@ class Vector {
 
   // Initialize vector using polar coordinates in n dimensions
   static fromPolar(radius, ...angles) {
-    const euclidean = Array(angles.length + 1).fill(0);
+    let euclidean = Array(angles.length + 1).fill(0);
     let sinProduct = 1;
 
     for (let i = 0; i < angles.length; i++) {
@@ -19,8 +19,10 @@ class Vector {
     }
 
     euclidean[angles.length] = sinProduct;
+    euclidean = euclidean
+      .map(coordinate => coordinate * radius);
 
-    return euclidean.map(coordinate => coordinate * radius)
+    return new Vector(...euclidean);
   }
 
   clone() {
