@@ -73,6 +73,11 @@ class Vector extends Array {
       .reduce((acc, value) => acc + value);
   }
 
+  floor() {
+    return new Vector(...this.map(
+      (component) => Math.floor(component)));
+  }
+
   // Need to make this general
   // // Non-standard multiplication of two vectors (returns a vector)
   // vectorMult(other) {
