@@ -78,15 +78,18 @@ class Vector extends Array {
       (component) => Math.floor(component)));
   }
 
-  // Need to make this general
-  // // Non-standard multiplication of two vectors (returns a vector)
-  // vectorMult(other) {
-  //   return new Vector(
-  //     this.x * other.x,
-  //     this.y * other.y,
-  //     this.z * other.z,
-  //   );
-  // }
+
+  // Non-standard multiplication of two vectors (returns a vector)
+  // Essentially dot product without the addition
+  vectorMult(other) {
+    return new Vector(...this.map(
+      (component, index) => component * other[index]));
+  }
+
+  vectorDiv(other) {
+    return new Vector(...this.map(
+      (component, index) => component / other[index]));
+  }
 
   cross(other) {
     return new Vector(
